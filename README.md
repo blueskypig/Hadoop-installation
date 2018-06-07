@@ -4,5 +4,6 @@ The script will install hadoop2.7.6 and java8 on your ubuntu, add new user "hdus
 
 Steps:
 (shell)
-git clone 
+git clone https://github.com/blueskypig/Hadoop-installation.git
+
 ./setup-hadoop
