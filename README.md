@@ -6,4 +6,4 @@ Steps:
 (shell)
 git clone https://github.com/blueskypig/Hadoop-installation.git
 
-./setup-hadoop
+sudo bash setup-hadoop
