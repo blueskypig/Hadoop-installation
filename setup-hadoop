@@ -130,15 +130,16 @@ EOF
 function setup_environment {
   export HADOOP_HOME=/usr/local/hadoop/hadoop-2.7.6
   sudo sed -i -- 's/JAVA_HOME=\${JAVA_HOME}/JAVA_HOME=\$(readlink -f \/usr\/bin\/java | sed "s:bin\/java::")/' $HADOOP_HOME/etc/hadoop/hadoop-env.sh
-  echo "setup_profile"
+  echo "setup_profile.."
   setup_profile
-  echo "setup_core_xml"
+  echo "setup_core_xml.."
   setup_core_xml
-  echo "setup_mapred_xml"
+  echo "setup_mapred_xml.."
   setup_mapred_xml
-  echo "setup_hdfs_xml"
+  echo "setup_hdfs_xml.."
   setup_hdfs_xml
   sudo chown -R hduser $HADOOP_HOME
+  echo "Done!"
 }
 
 confirm "Update Repository? [y/N] " && update_apt_repo 
