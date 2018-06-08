@@ -1,9 +1,9 @@
 # Hadoop-installation
-
-The script will install hadoop2.7.6 and java8 on your ubuntu, add new user "hduser" and set environment variables, you can modify the code refering to your needs;
+Test Environment: Ubunut16.04LTS
+The script will install hadoop2.7.6 and java8, add new user "hduser" and edit configurations, you can modify the code refering to your needs;
 
 Steps:
 (shell)
 git clone https://github.com/blueskypig/Hadoop-installation.git
 
-sudo bash setup-hadoop
+bash setup-hadoop
