@@ -13,9 +13,18 @@ confirm () {
   esac
 }
 function update_apt_repo  {
-  sudo add-apt-repository ppa:webupd8team/java
   sudo apt-get update 
 } 
+
+function install_SSH{
+  sudo apt-get install openssh-server
+  ssh localhost  #login localhost
+  exit           #quit
+  cd ~/.ssh/
+  ssh-keygen -t rsa
+  cat ./id_rsa.pub >> ./authorized_keys
+}
+
 function install_java {
   sudo apt-get install oracle-java8-installer
   sudo apt-get install oracle-java8-set-default
@@ -23,10 +32,9 @@ function install_java {
 
 function create_hadoop_user {
 
-  sudo useradd -m hduser
-  sudo adduser hduser sudo
-  sudo chsh -s /bin/bash hduser
-  sudo passwd hduser
+  sudo useradd -m hadoop -s /bin/bash
+  sudo passwd hadoop
+  sudo adduser hadoop sudo 
   
 }
 function install_hadoop {
@@ -143,8 +151,9 @@ function setup_environment {
 }
 
 confirm "Update Repository? [y/N] " && update_apt_repo 
-confirm "Install Java? [y/N] " && install_java
 confirm "Create hadoop user? [y/N] " && create_hadoop_user
+su hadoop && install_SSH
+confirm "Install Java? [y/N] " && install_java
 confirm "Install hadoop? [y/N] " && install_hadoop 
 confirm "Setup Hadoop Environment? [y/N]" &&  setup_environment
 
